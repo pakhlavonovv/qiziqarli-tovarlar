@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Header from "./components/header";
@@ -25,33 +25,65 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoadingButton(true)
+      setLoadingButton(true);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
-      await setDoc(doc(db, 'users', user.uid), {
-        firstname,
-        lastname,
-        email,
-        uid: user.uid,
-      });
-      console.log('User signed up:', user);
-      await sendEmailVerification(user)
+  
+      await sendEmailVerification(user);
       setModalMessage('😊 A confirmation link has been sent to your email. Please check your email.');
       setShowModal(true);
+  
+      const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        if (user.emailVerified) {
+          await setDoc(doc(db, 'users', user.uid), {
+            firstname,
+            lastname,
+            email,
+            uid: user.uid,
+          });
+          console.log('User successfully created:', user);
+          router.push('/login'); 
+        } else {
+          setModalMessage('Please verify your email before proceeding.');
+          setShowModal(true);
+        }
+      });
     } catch (error) {
       console.error('Error signing up:', error.message);
-
+  
       if (error.code === 'auth/email-already-in-use') {
-        setModalMessage('There was an error registering, please check your information again');
+        setModalMessage('This email is already in use. Please use a different one.');
       } else {
         setModalMessage('An error occurred during registration.');
       }
       setShowModal(true);
     } finally {
-      setLoadingButton(false)
+      setLoadingButton(false);
     }
   };
+  
+  
+  const checkVerificationAndCreateUser = async () => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user && user.emailVerified) {
+        try {
+          await setDoc(doc(db, 'users', user.uid), {
+            firstname,
+            lastname,
+            email: user.email,
+            uid: user.uid,
+          });
+          console.log('User data created in Firestore:', user);
+          unsubscribe(); 
+        } catch (error) {
+          console.error('Error creating user data:', error.message);
+        }
+      }
+    });
+  };
+  useEffect(() => {
+    checkVerificationAndCreateUser();
+  }, []);
 
   const handleGoogleSignUp = async () => {
     try {
@@ -59,8 +91,8 @@ const Page = () => {
       const user = result.user;
   
       await setDoc(doc(db, 'users', user.uid), {
-        firstname: user.email,
-        lastname: user.email,
+        firstname: user.firstname || user.email,
+        lastname: user.lastname || user.email,
         email: user.email,
         uid: user.uid,
       });
