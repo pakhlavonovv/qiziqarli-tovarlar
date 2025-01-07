@@ -28,7 +28,7 @@ body{
     animation: bblFadInOut 1.8s infinite ease-in-out;
   }
   .loader {
-    color: #FFF;
+    color: black;
     font-size: 7px;
     position: relative;
     text-indent: -9999em;

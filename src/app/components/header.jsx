@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="w-full">
-      <div className="sticky top-0 z-50 bg-[#050505] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
+      <div className="bg-[#050505] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
         <h2 className="text-white text-[9px] text-center min-[490px]:text-[11px] md:text-[13px] xl:text-[15px]">
           Top-Quality Products at Great Prices – Fast Delivery Service Available!
         </h2>
@@ -53,14 +53,14 @@ const Header = () => {
         </ul>
 
         <aside className="flex items-center gap-2 md:hidden">
+          <Link href={'/login'} className='text-[14px] sm:text-[16px]'>Log in</Link>
           <button onClick={toggleSidebar}>
             <i className="fa-solid fa-bars sm:text-[20px]"></i>
           </button>
-          <Link href={'/'}><i className="fa-regular fa-user sm:text-[20px]"></i></Link>
         </aside>
 
         <Link
-          href={'/'}
+          href={'/login'}
           className="hidden md:flex items-center justify-center bg-[#2C2F44] text-white w-[140px] h-[40px] rounded-md border-[1px] border-[#2C2F44] transition-all hover:bg-transparent hover:text-[#2C2F44]"
         >
           Log in
