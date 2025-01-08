@@ -7,7 +7,7 @@ import './components/style.css';
 import GoogleIcon from '../../public/images/google.webp';
 import Footer from "./components/footer";
 import { db } from '../../firebase-config';
-import { createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider,onAuthStateChanged,  signInWithPopup, getAuth } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
 const Page = () => {
@@ -18,6 +18,7 @@ const Page = () => {
   const [showModal, setShowModal] = useState(false); 
   const [modalMessage, setModalMessage] = useState(''); 
   const [loadingButton, setLoadingButton] = useState(false)
+  const [isValid, setIsValid] = useState(false)
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   
@@ -26,6 +27,7 @@ const Page = () => {
     e.preventDefault();
     try {
       setLoadingButton(true);
+  
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
   
@@ -34,14 +36,20 @@ const Page = () => {
       setShowModal(true);
   
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        if (user.emailVerified) {
+        if (user && user.emailVerified) {
           await setDoc(doc(db, 'users', user.uid), {
             firstname,
             lastname,
-            email,
+            email: user.email,
             uid: user.uid,
           });
+  
+          const idToken = await user.getIdToken();
+          localStorage.setItem('access_token', idToken);
+  
           console.log('User successfully created:', user);
+          unsubscribe(); 
+  
           router.push('/login'); 
         } else {
           setModalMessage('Please verify your email before proceeding.');
@@ -63,6 +71,7 @@ const Page = () => {
   };
   
   
+  
   const checkVerificationAndCreateUser = async () => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user && user.emailVerified) {
@@ -74,38 +83,45 @@ const Page = () => {
             uid: user.uid,
           });
           console.log('User data created in Firestore:', user);
-          unsubscribe(); 
+          unsubscribe();
         } catch (error) {
           console.error('Error creating user data:', error.message);
         }
       }
     });
   };
+  
   useEffect(() => {
     checkVerificationAndCreateUser();
   }, []);
 
   const handleGoogleSignUp = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-  
-      await setDoc(doc(db, 'users', user.uid), {
-        firstname: user.firstname || user.email,
-        lastname: user.lastname || user.email,
-        email: user.email,
-        uid: user.uid,
-      });
-  
-      setModalMessage('🎉 Congratulations! Your account has been created successfully with Google. Happy shopping at Floxsy!');
-      setShowModal(true);
-  
-      console.log('User signed up with Google:', user);
-    } catch (error) {
-      console.error('Error signing up with Google:', error.message);
-  
-      setModalMessage(`An error occurred while signing up with Google: ${error.message}`);
-      setShowModal(true);
+    const token = localStorage.getItem('access_token')
+    if(!token){
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+    
+        await setDoc(doc(db, 'users', user.uid), {
+          firstname: user.firstname || user.email,
+          lastname: user.lastname || user.email,
+          email: user.email,
+          uid: user.uid,
+        });
+    
+        setModalMessage('🎉 Congratulations! Your account has been created successfully with Google. Happy shopping at Floxsy!');
+        setShowModal(true);
+        localStorage.setItem('access_token', await user.getIdToken());
+        console.log('User signed up with Google:', user);
+      } catch (error) {
+        console.error('Error signing up with Google:', error.message);
+        
+        setModalMessage(`An error occurred while signing up with Google: ${error.message}`);
+        setShowModal(true);
+      }
+    } else {
+      setModalMessage('😃 Great job! You’ve successfully created your account. You can now start using our services')
+      setShowModal(true)
     }
   };
   
@@ -118,6 +134,15 @@ const Page = () => {
     }
   };
   
+  const handleEmailChange = (e) => {
+    const value = e.target.value
+    setEmail(value)
+    if(value.endsWith('@gmail.com')){
+      setIsValid(false)
+    } else {
+      setIsValid(true)
+    }
+  }
 
   return (
     <div>
@@ -129,16 +154,16 @@ const Page = () => {
         <form onSubmit={handleSubmit} className="w-full mt-3 flex flex-col items-center justify-center gap-2 lg:gap-3">
           <input className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md" type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} required placeholder="Enter your Name" />
           <input className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md" type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} required placeholder="Enter your Surname" />
-          <input className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Enter your Email" />
+          <input className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md" type="email" value={email} onChange={handleEmailChange} required placeholder="Enter your Email" />
           <input className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Enter your Password" />
-          <button disabled={loadingButton} type="submit" className="bg-[#091235] text-white w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] rounded-md hover:bg-[#112620]">{loadingButton ? "Creating..." : "Create Account"}</button>
+          <button disabled={loadingButton || isValid} type="submit" className="bg-[#091235] text-white w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] rounded-md hover:bg-[#112620]">{loadingButton ? "Creating..." : "Create Account"}</button>
         </form>
         <button onClick={handleGoogleSignUp} className="mt-2 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] flex items-center justify-center gap-1 text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md bg-transparent">
           <Image className="w-[25px] h-[25px]" src={GoogleIcon} alt="Google icon" />
           Sign Up with Google
         </button>
       </div>
-
+      {isValid && <p className="text-red-600 text-center mt-2">Email must end with @gmail.com</p>}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[80%] sm:w-96">
