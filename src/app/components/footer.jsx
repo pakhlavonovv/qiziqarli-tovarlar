@@ -13,7 +13,7 @@ const Footer = () => {
                     <Link href={'/'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Get 10% of your first order</Link>
                     <Link href={'/account'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>My account</Link>
                     <Link href={'/login'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Login</Link>
-                    <Link href={'/register'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Register</Link>
+                    <Link href={'/sign-up'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Register</Link>
                     <Link href={'/'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Shop</Link>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -32,7 +32,7 @@ const Footer = () => {
                     <Link href={'/terms-conditions'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Terms and Conditions</Link>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <Link href={'/'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3] font-bold'>Join us!</Link>
+                    <Link href={'/join'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3] font-bold'>Join us!</Link>
                     <div className="flex gap-3">
                    <Link target='_blank' href={'/'}> <i className="fa-brands fa-instagram text-white text-[9px] sm:text-[14px] lg:text-[16px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>
                     <Link target='_blank' href={'/'}><i className="fa-brands fa-facebook text-white text-[9px] sm:text-[14px] lg:text-[16px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>

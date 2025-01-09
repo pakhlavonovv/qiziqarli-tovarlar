@@ -26,7 +26,7 @@ const Header = () => {
 
       <header className="container flex items-center justify-between relative">
         <i>
-        <h1 className="text-[#2C2F44] text-[25px] font-extrabold sm:text-[30px] md:text-[40px]">Floxsy</h1>
+        <h1 className="text-[#2C2F44] text-[25px] cursor-pointer font-extrabold sm:text-[30px] md:text-[40px]">Floxsy</h1>
         </i>
 
         <ul className="hidden md:flex items-center gap-3">
@@ -36,17 +36,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/'}>
+            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/contact'}>
               Contact
             </Link>
           </li>
           <li>
-            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/'}>
+            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/about'}>
               About us
             </Link>
           </li>
           <li>
-            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/'}>
+            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/sign-up'}>
               Sign Up
             </Link>
           </li>
@@ -81,17 +81,17 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/'}>
+              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/contact'}>
                 Contact
               </Link>
             </li>
             <li>
-              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/'}>
+              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/about'}>
                 About us
               </Link>
             </li>
             <li>
-              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/'}>
+              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/sign-up'}>
                 Sign Up
               </Link>
             </li>
