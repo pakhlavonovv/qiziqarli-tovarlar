@@ -1,23 +1,39 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useParams } from "next/navigation"; 
 import { db, doc, getDoc } from "../../../../firebase-products/index";
-import Image from "next/image";
+import Header from "../../components/header";
+import Loading from "../../components/loading";
+import Footer from "../../components/footer";
+import '../../components/style.css'
 
 const ProductDetails = () => {
   const { id } = useParams(); 
+  const [count, setCount] = useState(1); 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dynamicPrice, setDynamicPrice] = useState(0); 
 
   useEffect(() => {
     async function fetchProduct() {
+      if (!id) {
+        console.log("ID not found");
+        setLoading(false);
+        return;
+      }
       try {
+        console.log("Fetching product with ID:", id);
         const docRef = doc(db, "products", id);
         const docSnap = await getDoc(docRef);
+
         if (docSnap.exists()) {
-          setProduct(docSnap.data());
+          console.log("Product data:", docSnap.data());
+          const productData = docSnap.data();
+          setProduct(productData);
+          setDynamicPrice(productData.price); 
         } else {
-          console.log("Product not found");
+          console.log("No product found with this ID in Firebase");
         }
       } catch (error) {
         console.log("Error fetching product:", error);
@@ -25,25 +41,72 @@ const ProductDetails = () => {
         setLoading(false);
       }
     }
-    if (id) {
-      fetchProduct();
-    }
+    fetchProduct();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
+  const handleIncrease = () => {
+    setCount(prevCount => prevCount + 1); 
+    setDynamicPrice(prevPrice => prevPrice * 2); 
+  };
+
+  const handleDecrease = () => {
+    if (count > 1) {
+      setCount(prevCount => prevCount - 1);
+      setDynamicPrice(prevPrice => Math.max(prevPrice / 2, product.price)); 
+    }
+  };
+
+  if (loading) return <div><Loading /></div>;
+  if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="product-details">
-      <Image
-        src={product?.image}
-        alt={product?.name}
-        width={500}
-        height={500}
-        priority
-      />
-      <h1>{product?.name}</h1>
-      <p>{product?.description}</p>
-      <h2>${product?.price}</h2>
+    <div>
+      <div className="mb-5 md:mb-[40px]">
+      <Header />
+      </div>
+      <div className="container">
+        <div className="flex items-center gap-2">
+          <span className="text-[12px] sm:text-[14px] md:text-[16px]">Trend Products /</span>
+          <span className="text-[12px] sm:text-[14px] md:text-[16px]"> {product.name}</span>
+        </div>
+        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:items-center">
+          {product.image ? (
+            <Image src={product.image} alt={product.name} width={500} height={500} className="w-full max-w-[500px] max-h-[500px] lg:max-w-full lg:max-h-[600px]" priority />
+          ) : (
+            <div>No image available</div>
+          )}
+          <div className="flex flex-col gap-1">
+            <span className="text-[12px] sm:text-[14px] lg:text-[16px]">Model: Samsung</span>
+            <h1 className="text-[18px] sm:text-[22px] lg:text-[25px] font-bold">{product.name}</h1>
+            <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
+            <h3 className="text-[14px] lg:text-[16x] font-medium text-gray-700 line-through">$2000</h3>
+            <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">${dynamicPrice}</h2>
+            <span>Product count: {count}</span>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-1">
+                <button
+                  className="border-[1px] border-[#2B4257] w-[100%] h-[40px] text-[20px] rounded-md"
+                  onClick={handleDecrease}
+                >
+                  -
+                </button>
+                <button
+                  className="bg-[#2B4257] w-[100%] h-[40px] text-[20px] text-white rounded-md"
+                  onClick={handleIncrease}
+                >
+                  +
+                </button>
+              </div>
+              <button className="bg-[#091235] w-[100%] h-[40px] text-[15px] text-white rounded-md">
+                Buy now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-9 md:mt-[50px] lg:mt-[100px]">
+      <Footer/>
+      </div>
     </div>
   );
 };

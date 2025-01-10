@@ -5,7 +5,7 @@ import './style.css';
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { text: "All trending products", style: "text-[#EAE7E2] text-[25px] sm:text-[35px] md:text-[40px] lg:text-[45px] xl:text-[50px]" },
+    { text: "All trend products", style: "text-[#EAE7E2] text-[25px] sm:text-[35px] md:text-[40px] lg:text-[45px] xl:text-[50px]" },
     { text: "are", style: "text-[#D0D2DE] text-[25px] sm:text-[35px] md:text-[40px] lg:text-[45px] xl:text-[50px]" },
     { text: "on", style: "text-[#F4EBD0] text-[25px] sm:text-[35px] md:text-[40px] lg:text-[45px] xl:text-[50px]" },
     { text: "Floxsy", style: "text-[#FFFAE5] text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[90px]" }
