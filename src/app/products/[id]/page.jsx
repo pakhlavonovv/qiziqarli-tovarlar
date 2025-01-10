@@ -18,17 +18,14 @@ const ProductDetails = () => {
   useEffect(() => {
     async function fetchProduct() {
       if (!id) {
-        console.log("ID not found");
         setLoading(false);
         return;
       }
       try {
-        console.log("Fetching product with ID:", id);
         const docRef = doc(db, "products", id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          console.log("Product data:", docSnap.data());
           const productData = docSnap.data();
           setProduct(productData);
           setDynamicPrice(productData.price); 
@@ -36,7 +33,7 @@ const ProductDetails = () => {
           console.log("No product found with this ID in Firebase");
         }
       } catch (error) {
-        console.log("Error fetching product:", error);
+        console.log(error);
       } finally {
         setLoading(false);
       }
@@ -69,9 +66,9 @@ const ProductDetails = () => {
           <span className="text-[12px] sm:text-[14px] md:text-[16px]">Trend Products /</span>
           <span className="text-[12px] sm:text-[14px] md:text-[16px]"> {product.name}</span>
         </div>
-        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:items-center">
+        <div className="mt-5 grid grid-cols-1 items-center justify-center gap-5 lg:grid-cols-2 lg:items-center">
           {product.image ? (
-            <Image src={product.image} alt={product.name} width={500} height={500} className="w-full max-w-[500px] max-h-[500px] lg:max-w-full lg:max-h-[600px]" priority />
+              <Image src={product.image} alt={product.name} width={500} height={500} className= "w-full max-h-[300px] min-[400px]:w-[90%] min-[400px]:max-h-[300px] rounded-md min-[450px]:max-h-[400px] min-[500px]:max-w-[400px] lg:max-w-full lg:max-h-[500px]" priority />
           ) : (
             <div>No image available</div>
           )}

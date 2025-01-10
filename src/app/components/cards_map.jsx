@@ -22,7 +22,7 @@ const CardsMap = () => {
         }));
         setProducts(productList);
       } catch (error) {
-        console.log('Productlarni yuklashda xatolik:', error);
+        console.log(error);
       } finally {
         setLoading(false)
       }

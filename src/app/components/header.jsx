@@ -67,7 +67,7 @@ const Header = () => {
         </Link>
 
         <div
-          className={`fixed top-0 left-0 w-[65%] h-full bg-[#1B1821] text-white p-4 transform transition-transform ${
+          className={`fixed top-0 left-0 z-50 w-[65%] h-full bg-[#1B1821] text-white p-4 transform transition-transform ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
