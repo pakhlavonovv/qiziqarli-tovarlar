@@ -73,10 +73,10 @@ const ProductDetails = () => {
             <div>No image available</div>
           )}
           <div className="flex flex-col gap-1">
-            <span className="text-[12px] sm:text-[14px] lg:text-[16px]">Model: Samsung</span>
+            <span className="text-[12px] sm:text-[14px] lg:text-[16px]">Model: {product.model}</span>
             <h1 className="text-[18px] sm:text-[22px] lg:text-[25px] font-bold">{product.name}</h1>
             <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
-            <h3 className="text-[14px] lg:text-[16x] font-medium text-gray-700 line-through">$2000</h3>
+            <h3 className="text-[14px] lg:text-[16x] font-medium text-gray-700 line-through">${product.sale}</h3>
             <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">${dynamicPrice}</h2>
             <span>Product count: {count}</span>
             <div className="flex flex-col gap-1">

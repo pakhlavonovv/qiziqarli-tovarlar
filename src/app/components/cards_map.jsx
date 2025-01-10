@@ -33,7 +33,7 @@ const CardsMap = () => {
   return (
     <div className="w-[97%] mx-auto px-4">
       <h1 className="text-[20px] text-center sm:text-start font-bold sm:text-[25px] lg:text-[30px] mb-8">
-        2025 Most Popular Products
+        Trend Products
       </h1>
       <div className="grid grid-cols-2 gap-1 sm:gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 relative">
         {loading ? (
@@ -46,7 +46,7 @@ const CardsMap = () => {
               <div className="w-full h-full flex flex-col justify-between rounded-lg hover:cursor-pointer group relative hover:shadow-md">
                 <div className="rounded-lg h-[200px] sm:h-[250px] overflow-hidden">
                   <Image
-                    className="object-cover w-full h-full rounded-md group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                    className="object-contain w-full h-full rounded-md group-hover:scale-105 transition-transform duration-300 ease-in-out"
                     src={product.image}
                     priority
                     width={400}
@@ -60,7 +60,7 @@ const CardsMap = () => {
                   </h2>
                   <div className="flex justify-between items-center">
                     <h2 className="text-[14px] sm:text-[16px] font-medium text-gray-700 line-through">
-                      1000
+                      ${product.sale}
                     </h2>
                     <h3 className="font-bold text-[16px] sm:text-[18px] text-gray-900">
                       ${product.price}
