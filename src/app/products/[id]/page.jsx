@@ -68,7 +68,9 @@ const ProductDetails = () => {
         </div>
         <div className="mt-5 grid grid-cols-1 items-center justify-center gap-5 lg:grid-cols-2 lg:items-center">
           {product.image ? (
-              <Image src={product.image} alt={product.name} width={500} height={500} className= "w-full max-h-[300px] min-[400px]:w-[90%] min-[400px]:max-h-[300px] rounded-md min-[450px]:max-h-[400px] min-[500px]:max-w-[400px] lg:max-w-full lg:max-h-[500px]" priority />
+            <div className="flex items-center justify-center">
+              <Image src={product.image} alt={product.name} width={500} height={500} className= "object-contain w-full max-h-[300px] min-[400px]:w-[90%] min-[400px]:max-h-[300px] rounded-md min-[450px]:max-h-[400px] min-[500px]:max-w-[400px] lg:max-w-full lg:max-h-[500px]" priority />
+            </div>
           ) : (
             <div>No image available</div>
           )}
