@@ -32,7 +32,6 @@ const ProductDetails = () => {
       try {
         const docRef = doc(db, "products", id);
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
           const productData = docSnap.data();
           setProduct(productData);
@@ -76,6 +75,7 @@ const ProductDetails = () => {
           body: JSON.stringify({
             name: product.name,
             price: dynamicPrice,
+            count: count
           }),
         });
   

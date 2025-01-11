@@ -5,30 +5,47 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    const { name, price } = await req.json();
+    const { name, price, email, count } = await req.json();
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card'], 
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: 'usd', 
             product_data: {
-              name,
+              name, 
             },
-            unit_amount: price * 100,
+            unit_amount: price * 100, 
           },
-          quantity: 1,
+          quantity: count, 
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`, 
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`, 
+
+      billing_address_collection: 'required', 
+
+      customer_email: email, 
+
+      phone_number_collection: {
+        enabled: true, 
+      },
+
+      custom_fields: [
+        {
+          key: 'delivery_instructions', 
+          label: { type: 'custom', custom: 'Delivery Instructions' },
+          type: 'text', 
+          optional: false, 
+        },
+      ],
     });
 
     return NextResponse.json({ id: session.id });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
