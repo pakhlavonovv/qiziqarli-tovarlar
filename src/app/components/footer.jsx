@@ -11,7 +11,6 @@ const Footer = () => {
                 <div className="flex flex-col gap-1">
                     <Link href={'/'} className='font-bold text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Subscribe</Link>
                     <Link href={'/'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Get 10% of your first order</Link>
-                    <Link href={'/account'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>My account</Link>
                     <Link href={'/login'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Login</Link>
                     <Link href={'/sign-up'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Register</Link>
                     <Link href={'/'} className='text-white text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Shop</Link>

@@ -29,7 +29,7 @@ const SuccessPage = () => {
           <meta property="og:title" content="Order Success - Floxsy" />
           <meta property="og:description" content="Thank you for your purchase! Your payment was successfully processed. We will notify you once your order ships." />
           <meta property="og:image" content="../../../public/images/success.jpg" />
-          <meta property="og:url" content="https://floxsy.com/success" />
+          <meta property="og:url" content="https://floxsy.shop/success" />
           <meta property="og:site_name" content="Floxsy" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Order Success - Floxsy" />
