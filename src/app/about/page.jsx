@@ -10,7 +10,7 @@ const Page = () => {
     <Header/>
     </div>
     <div className="container flex flex-col gap-4 mt-9 md:gap-6 xl:flex-row xl:gap-8">
-    <Image className="w-[100%] rounded-md order-2 xl:order-1 md:w-[90%] lg:w-[70%] xl:w-[45%]" src={AboutImage} alt="About image"/>
+    <Image priority className="w-[100%] rounded-md order-2 xl:order-1 md:w-[90%] lg:w-[70%] xl:w-[45%]" src={AboutImage} alt="About image"/>
     <div className="flex flex-col gap-1 order-1 xl:order-2">
     <h1 className="text-[18px] sm:text-[22px] md:text-[24px] lg:text-[28px]">Floxsy About</h1>
     <div className="flex flex-col gap-1 mt-1 sm:mt-3">
