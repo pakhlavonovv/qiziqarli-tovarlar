@@ -24,15 +24,11 @@ export async function POST(req) {
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`, 
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`, 
-
       billing_address_collection: 'required', 
-
       customer_email: email, 
-
       phone_number_collection: {
         enabled: true, 
       },
-
       custom_fields: [
         {
           key: 'delivery_instructions', 
@@ -49,3 +45,4 @@ export async function POST(req) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+

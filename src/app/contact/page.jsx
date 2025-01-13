@@ -99,7 +99,7 @@ const Page = () => {
     type="submit"
     className="bg-[#2C2F44] w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] h-[40px] text-white text-[12px] sm:text-[14px] xl:text-[16px] rounded-sm"
   >
-    Submit a problem
+    Send a message
   </button>
 </form>
 

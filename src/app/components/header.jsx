@@ -14,7 +14,7 @@ const Header = () => {
     <div className="w-full">
       <div className="bg-[#050505] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
         <h2 className="text-white text-[9px] text-center min-[490px]:text-[11px] md:text-[13px] xl:text-[15px]">
-          Top-Quality Products at Great Prices – Fast Delivery Service Available!
+          Top-Quality Products at Great Prices – Free Delivery on All Orders
         </h2>
         <Link
           href={'/'}

@@ -61,11 +61,12 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = async () => {
-    const access_token = window.localStorage.getItem('access_token')
-    const login = window.localStorage.getItem('login')
-
+    const access_token = window.localStorage.getItem('access_token');
+    const login = window.localStorage.getItem('login');
+  
     if (!product || dynamicPrice <= 0) return;
-    if(access_token || login){   
+  
+    if (access_token || login) {   
       try {
         const response = await fetch('../../api/checkout_sessions', {
           method: 'POST',
@@ -95,11 +96,11 @@ const ProductDetails = () => {
         console.error('Error creating checkout session:', error);
       }
     } else {
-      setModalMessage('Dear user, Please register to buy products.')
-      setShowModal(true)
+      setModalMessage('Dear user, Please register to buy products.');
+      setShowModal(true);
     }
   };
-
+  
   const closeModal = () => {
     if (modalMessage.startsWith('Dear')) {
       router.push('/sign-up');
@@ -131,6 +132,7 @@ const ProductDetails = () => {
           )}
           <div className="flex flex-col gap-1">
             <span className="text-[12px] sm:text-[14px] lg:text-[16px]">Model: {product.model}</span>
+            <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-red-600">Free delivery</p>
             <h1 className="text-[18px] sm:text-[22px] lg:text-[25px] font-bold">{product.name}</h1>
             <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
             <h3 className="text-[14px] lg:text-[16x] font-medium text-gray-700 line-through">${product.sale}</h3>
