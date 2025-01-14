@@ -66,6 +66,7 @@ const CardsMap = () => {
                       ${product.price}
                     </h3>
                   </div>
+                  <p className='text-red-600 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]'>Free delivery</p>
                 </div>
               </div>
 

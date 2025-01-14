@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useParams } from "next/navigation"; 
+import { useParams } from "next/navigation";
 import { db, doc, getDoc } from "../../../../firebase-products/index";
 import { loadStripe } from '@stripe/stripe-js';
 import Header from "../../components/header";
@@ -14,13 +14,13 @@ import '../../components/style.css';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 const ProductDetails = () => {
-  const { id } = useParams(); 
-  const [count, setCount] = useState(1); 
+  const { id } = useParams();
+  const [count, setCount] = useState(1);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [dynamicPrice, setDynamicPrice] = useState(0); 
-  const [showModal, setShowModal] = useState(false); 
-  const [modalMessage, setModalMessage] = useState(''); 
+  const [dynamicPrice, setDynamicPrice] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
   const router = useRouter()
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProductDetails = () => {
         if (docSnap.exists()) {
           const productData = docSnap.data();
           setProduct(productData);
-          setDynamicPrice(productData.price); 
+          setDynamicPrice(productData.price);
         } else {
           console.log("No product found with this ID in Firebase");
         }
@@ -48,25 +48,29 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
+  
   const handleIncrease = () => {
-    setCount(prevCount => prevCount + 1); 
-    setDynamicPrice(prevPrice => prevPrice * 2); 
+    setCount((prevCount) => {
+      const newCount = prevCount + 1;
+      setDynamicPrice(product.price * newCount); 
+      return newCount;
+    });
   };
-
+  
   const handleDecrease = () => {
-    if (count > 1) {
-      setCount(prevCount => prevCount - 1);
-      setDynamicPrice(prevPrice => Math.max(prevPrice / 2, product.price)); 
-    }
+    setCount((prevCount) => {
+      const newCount = prevCount > 1 ? prevCount - 1 : prevCount;
+      setDynamicPrice(product.price * newCount);
+      return newCount;
+    });
   };
-
+  
   const handleBuyNow = async () => {
     const access_token = window.localStorage.getItem('access_token');
     const login = window.localStorage.getItem('login');
-  
+
     if (!product || dynamicPrice <= 0) return;
-  
-    if (access_token || login) {   
+    if (access_token || login) {
       try {
         const response = await fetch('../../api/checkout_sessions', {
           method: 'POST',
@@ -75,19 +79,19 @@ const ProductDetails = () => {
           },
           body: JSON.stringify({
             name: product.name,
-            price: dynamicPrice,
-            count: count
+            price: product.price * count,
+            count: count,
           }),
         });
-  
+
         const session = await response.json();
-  
+
         if (session.id) {
           const stripe = await stripePromise;
           const { error } = await stripe.redirectToCheckout({
             sessionId: session.id,
           });
-  
+
           if (error) {
             console.error('Error during checkout:', error);
           }
@@ -100,7 +104,8 @@ const ProductDetails = () => {
       setShowModal(true);
     }
   };
-  
+
+
   const closeModal = () => {
     if (modalMessage.startsWith('Dear')) {
       router.push('/sign-up');
@@ -162,24 +167,24 @@ const ProductDetails = () => {
             </div>
           </div>
           {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-[80%] sm:w-96">
-              <button onClick={closeModal} className="absolute top-2 right-2 text-gray-600 text-xl">
-                ×
-              </button>
-              <p className="text-center text-[14px] sm:text-[16px] lg:text-[18px] text-gray-800">{modalMessage}</p>
-              <button
-                onClick={closeModal}
-                className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
-              >
-                Close and register now
-              </button>
+            <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+              <div className="bg-white p-6 rounded-lg shadow-lg w-[80%] sm:w-96">
+                <button onClick={closeModal} className="absolute top-2 right-2 text-gray-600 text-xl">
+                  ×
+                </button>
+                <p className="text-center text-[14px] sm:text-[16px] lg:text-[18px] text-gray-800">{modalMessage}</p>
+                <button
+                  onClick={closeModal}
+                  className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
+                >
+                  Close and register now
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       </div>
-      <div className="mt-9 md:mt-[50px] lg:mt-[100px]">
+      <div className="mt-9 md:mt-[50px] lg:mt-[80px]">
         <Footer />
       </div>
     </div>
