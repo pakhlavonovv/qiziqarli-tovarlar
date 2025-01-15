@@ -115,7 +115,18 @@ const ProductDetails = () => {
   };
 
   if (loading) return <div><Loading /></div>;
-  if (!product) return <div>Product not found</div>;
+  if (!product) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow flex items-center justify-center mb-9 mt-9">
+          <h1 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Product Not Found</h1>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+  
 
   return (
     <div>
