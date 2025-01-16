@@ -3,40 +3,37 @@ import React, { useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import '../components/style.css'
+const faqs = [
+    {
+        question: "What does your company or business do?",
+        answer: "We help you find high-quality products and deliver them directly to your doorstep. Our goal is to provide the best online shopping experience for our customers.",
+    },
+    {
+        question: "What is the purpose of the site?",
+        answer: "Our website aims to make online shopping easy and convenient by offering high-quality products delivered directly to your doorstep. We prioritize customer satisfaction and strive to provide a seamless shopping experience.",
+    },
+    {
+        question: "What payment methods do you accept?",
+        answer: "We accept payments through Stripe. This ensures a safe and convenient payment process for our customers.",
+    },
+    {
+        question: "How long does delivery take?",
+        answer: "Delivery usually takes 3-7 business days depending on your location. But sometimes it may take longer if your address is far from the product and it will take up to 14-18 days.",
+    },
+    {
+        question: "How is the shipping cost calculated?",
+        answer: "Shipping costs depend on the destination and the size of your order. The exact amount will be displayed at checkout.",
+    },
+    {
+        question: "What should I do if I entered the wrong address during checkout?",
+        answer: "If you entered the wrong address during payment, please contact us immediately - abdulokhpakhlavonov@gmail.com and in any case, write your problem on the contact page. Please let us know within 24 hours if you have any problem with the address otherwise it may be late.",
+    },
+];
 const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
-
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
-
-    const faqs = [
-        {
-            question: "What does your company or business do?",
-            answer: "We help you find high-quality products and deliver them directly to your doorstep. Our goal is to provide the best online shopping experience for our customers.",
-        },
-        {
-            question: "What is the purpose of the site?",
-            answer: "Our website aims to make online shopping easy and convenient by offering high-quality products delivered directly to your doorstep. We prioritize customer satisfaction and strive to provide a seamless shopping experience.",
-        },
-        {
-            question: "What payment methods do you accept?",
-            answer: "We accept payments through Stripe. This ensures a safe and convenient payment process for our customers.",
-        },
-        {
-            question: "How long does delivery take?",
-            answer: "Delivery usually takes 3-7 business days depending on your location. But sometimes it may take longer if your address is far from the product and it will take up to 14-18 days.",
-        },
-        {
-            question: "How is the shipping cost calculated?",
-            answer: "Shipping costs depend on the destination and the size of your order. The exact amount will be displayed at checkout.",
-        },
-        {
-            question: "What should I do if I entered the wrong address during checkout?",
-            answer: "If you entered the wrong address during payment, please contact us immediately - abdulokhpakhlavonov@gmail.com and in any case, write your problem on the contact page. Please let us know within 24 hours if you have any problem with the address otherwise it may be late.",
-        },
-    ];
-
     return (
         <>
             <div className="mb-5">

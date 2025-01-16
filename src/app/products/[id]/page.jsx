@@ -5,13 +5,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { db, doc, getDoc } from "../../../../firebase-products/index";
-import { loadStripe } from '@stripe/stripe-js';
 import Header from "../../components/header";
 import Loading from "../../components/loading";
 import Footer from "../../components/footer";
 import '../../components/style.css';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -21,7 +19,7 @@ const ProductDetails = () => {
   const [dynamicPrice, setDynamicPrice] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -48,23 +46,22 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
-  
   const handleIncrease = () => {
     setCount((prevCount) => {
       const newCount = prevCount + 1;
-      setDynamicPrice(product.price * newCount); 
+      setDynamicPrice(product?.price * newCount); 
       return newCount;
     });
   };
-  
+
   const handleDecrease = () => {
     setCount((prevCount) => {
       const newCount = prevCount > 1 ? prevCount - 1 : prevCount;
-      setDynamicPrice(product.price * newCount);
+      setDynamicPrice(product?.price * newCount);
       return newCount;
     });
   };
-  
+
   const handleBuyNow = async () => {
     const access_token = window.localStorage.getItem('access_token');
     const login = window.localStorage.getItem('login');
@@ -105,7 +102,6 @@ const ProductDetails = () => {
     }
   };
 
-
   const closeModal = () => {
     if (modalMessage.startsWith('Dear')) {
       router.push('/sign-up');
@@ -114,7 +110,7 @@ const ProductDetails = () => {
     }
   };
 
-  if (loading) return <div><Loading /></div>;
+  if (loading) return <Loading />;
   if (!product) {
     return (
       <div className="flex flex-col min-h-screen">
@@ -126,7 +122,6 @@ const ProductDetails = () => {
       </div>
     );
   }
-  
 
   return (
     <div>
@@ -151,7 +146,7 @@ const ProductDetails = () => {
             <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-red-600">Free delivery</p>
             <h1 className="text-[18px] sm:text-[22px] lg:text-[25px] font-bold">{product.name}</h1>
             <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
-            <h3 className="text-[14px] lg:text-[16x] font-medium text-gray-700 line-through">${product.sale}</h3>
+            <h3 className="text-[14px] lg:text-[16px] font-medium text-gray-700 line-through">${product.sale}</h3>
             <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">${dynamicPrice}</h2>
             <span>Product count: {count}</span>
             <div className="flex flex-col gap-1">
