@@ -31,7 +31,6 @@ const Footer = () => {
                     <Link href={'/join'} className='text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3] font-bold'>Join us!</Link>
                     <div className="flex gap-3">
                    <Link target='_blank' href={'https://www.instagram.com/floxsy.shop/'}> <i className="fa-brands fa-instagram text-white text-[9px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>
-                    <Link target='_blank' href={'/'}><i className="fa-brands fa-facebook text-white text-[9px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>
                     <Link target='_blank' href={'/'}> <i className="fa-brands fa-tiktok text-white text-[9px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>
                    <Link target='_blank' href={'https://t.me/floxsy_shop'}> <i className="fa-brands fa-telegram text-white text-[9px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[25px] transition-all hover:text-[#88A9C3] fa-xl"></i></Link>
                     </div>

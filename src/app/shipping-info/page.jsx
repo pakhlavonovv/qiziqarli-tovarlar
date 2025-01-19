@@ -23,12 +23,14 @@ const Page = () => {
       </div>
       <div className="container">
         <h1 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-center mb-4">Shipping Information</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 md:items-center md:gap-4">
         {shipping_info.map((item, index) => (
           <div key={index} className="grid grid-cols-1 gap-1 mb-2 sm:mb-4 md:w-[80%] lg:w-[60%]">
             <h3 className="font-semibold text-[16px] sm:text-[18px] lg:text-[20px]">{item.title}</h3>
             <p className="text-gray-700 text-[13px] sm:text-[15px] lg:text-[17px]">{item.subtitle}</p>
           </div>
         ))}
+        </div>
       </div>
       <div className="mt-8">
       <Footer />
