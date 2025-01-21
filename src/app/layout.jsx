@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Floxsy - Fashion, Tech, and More at Your Fingertips",
+  title: "Floxsy - Elevate Your Life with Style and Innovation",
   description: "Floxsy is a shopping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!",
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Floxsy is a shopping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!" />
         <meta name="keywords" content="trend products, online shopping, products, fashion, electronics, deals" />
         <meta property="og:title" content="Floxsy - Fashion, Tech, and More at Your Fingertips" />
-        <meta property="og:description" content="Floxsy is a dropshipping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!" />
+        <meta property="og:description" content="Floxsy is a shopping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://floxsy.shop" />
         <meta property="og:site_name" content="Floxsy" />
