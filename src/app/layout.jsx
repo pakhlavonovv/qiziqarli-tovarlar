@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Floxsy" />
         <meta name="description" content="Floxsy is a shopping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!" />
         <meta name="keywords" content="trend products, online shopping, products, fashion, electronics, deals" />
-        <meta property="og:title" content="Floxsy - Fashion, Tech, and More at Your Fingertips" />
+        <meta property="og:title" content="Floxsy - Elevate Your Life with Style and Innovation" />
         <meta property="og:description" content="Floxsy is a shopping website offering a wide range of products at competitive prices. Explore various categories, special deals, and more!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://floxsy.shop" />
