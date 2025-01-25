@@ -8,7 +8,8 @@ import Loading from './loading';
 
 const CardsMap = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(true);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -45,12 +46,16 @@ const CardsMap = () => {
             <Link key={product.id} href={`/products/${product.id}`}>
               <div className="w-full h-full flex flex-col justify-between rounded-lg hover:cursor-pointer group relative hover:shadow-md">
                 <div className="rounded-lg h-[200px] sm:h-[250px] overflow-hidden">
+                  {loading && (
+                    <div className="absolute inset-0 animate-pulse bg-gray-300 rounded-lg"></div>
+                  )}
                   <Image
-                    className="object-contain w-full h-full rounded-md group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                    src={product.image}
+                    className={`object-contain w-full h-full rounded-md group-hover:scale-105 transition-transform duration-300 ease-in-out ${loadingImage ? "opacity-0" : "opacity-100"
+                      }`} src={product.image}
                     priority
                     width={400}
                     height={500}
+                    onLoadingComplete={()=> setLoadingImage(false)}
                     alt={product.name}
                   />
                 </div>
@@ -75,9 +80,6 @@ const CardsMap = () => {
         )}
       </div>
     </div>
-
-
-
   );
 };
 

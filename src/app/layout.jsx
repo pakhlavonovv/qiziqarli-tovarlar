@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="icon" href="favicon.ico?v=2" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <title>Floxsy - Fashion, Tech, and More at Your Fingertips</title>
+        <title>Floxsy - Elevate Your Life with Style and Innovation</title>
         <meta name="csrf-param" content="_csrf" />
         <link
           rel="stylesheet"
