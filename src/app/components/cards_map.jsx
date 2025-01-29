@@ -38,9 +38,9 @@ const CardsMap = () => {
       </h1>
       <div className="grid grid-cols-2 gap-1 sm:gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 relative">
         {loading ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10">
-            <Loading />
-          </div>
+           <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10">
+           <Loading />
+         </div>
         ) : (
           products.map((product) => (
             <Link key={product.id} href={`/products/${product.id}`}>
