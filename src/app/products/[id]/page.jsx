@@ -66,42 +66,40 @@ const ProductDetails = () => {
   const handleBuyNow = async () => {
     const access_token = window.localStorage.getItem('access_token');
     const login = window.localStorage.getItem('login');
-
-    if (!product || dynamicPrice <= 0) return;
+  
+    if (!product || product.price <= 0) return;
+  
     if (access_token || login) {
       try {
-        const response = await fetch('../../api/checkout_sessions', {
+        const response = await fetch('/api/payeer', {  
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             name: product.name,
-            price: product.price * count,
+            price: product.price,
             count: count,
           }),
         });
-
-        const session = await response.json();
-
-        if (session.id) {
-          const stripe = await stripePromise;
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: session.id,
-          });
-
-          if (error) {
-            console.error('Error during checkout:', error);
-          }
+  
+        const data = await response.json();
+  
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          console.error('Payeer payment URL not received');
         }
       } catch (error) {
-        console.error('Error creating checkout session:', error);
+        console.error('Error processing payment:', error);
       }
     } else {
       setModalMessage('Dear user, Please register to buy products.');
       setShowModal(true);
     }
   };
+  
+  
 
   const closeModal = () => {
     if (modalMessage.startsWith('Dear')) {
