@@ -7,7 +7,7 @@ import Footer from "../components/footer";
 import Loading from '../components/loading'
 import '../components/style.css';
 import GoogleIcon from '../../../public/images/google.webp';
-import { auth, db } from '../../../firebase-config';
+import { auth, db1 } from '../../../firebase-config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -46,7 +46,7 @@ const Page = () => {
         localStorage.setItem('lastname', lastname);
         localStorage.setItem('login', email);
         setShowModal(true);
-        await setDoc(doc(db, 'users', user.uid), {
+        await setDoc(doc(db1, 'users', user.uid), {
           firstname,
           lastname,
           email,
@@ -81,7 +81,7 @@ const Page = () => {
         localStorage.setItem('access_token', access_token);
         localStorage.setItem('email', user.email);
         setShowModal(true);
-        await setDoc(doc(db, 'users', user.uid), {
+        await setDoc(doc(db1, 'users', user.uid), {
           firstname: user.firstname || user.displayName || '',
           lastname: user.lastname || '',
           email: user.email,
