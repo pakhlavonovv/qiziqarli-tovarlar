@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { db, doc, getDoc } from "../../../../firebase-products/index";
+import { db, doc, getDoc } from "../../../../firebase-products";
 import Header from "../../components/header";
 import Loading from "../../components/loading";
 import Footer from "../../components/footer";
 import '../../components/style.css';
+import Link from "next/link";
 
-
-const ProductDetails = () => {
+const ProductDetails = ({ params }) => {
   const { id } = useParams();
   const [count, setCount] = useState(1);
   const [product, setProduct] = useState(null);
@@ -20,7 +20,8 @@ const ProductDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const router = useRouter();
-
+  const paramsData = use(params);
+  const productId = paramsData.id; 
   useEffect(() => {
     async function fetchProduct() {
       if (!id) {
@@ -70,29 +71,7 @@ const ProductDetails = () => {
     if (!product || product.price <= 0) return;
   
     if (access_token || login) {
-      try {
-        const response = await fetch('/api/payeer', {  
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: product.name,
-            price: product.price,
-            count: count,
-          }),
-        });
-  
-        const data = await response.json();
-  
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          console.error('Payeer payment URL not received');
-        }
-      } catch (error) {
-        console.error('Error processing payment:', error);
-      }
+      router.push(`/payment/${productId}?price=${dynamicPrice}&count=${count}`)
     } else {
       setModalMessage('Dear user, Please register to buy products.');
       setShowModal(true);
@@ -114,8 +93,9 @@ const ProductDetails = () => {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow flex items-center justify-center mb-9 mt-9">
+        <main className="flex-grow flex flex-col items-center justify-center mb-9 mt-9">
           <h1 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Product Not Found</h1>
+          <Link href={'/'} className="w-[150px] h-[35px] flex items-center justify-center bg-black text-white rounded-md">Go to blank page</Link>
         </main>
         <Footer />
       </div>
