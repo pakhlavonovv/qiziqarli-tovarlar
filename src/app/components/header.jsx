@@ -26,7 +26,7 @@ const Header = () => {
 
       <header className="container flex items-center justify-between relative">
         <i>
-        <h1 className="text-[#2C2F44] text-[25px] cursor-pointer font-extrabold sm:text-[30px] md:text-[40px]">Floxsy</h1>
+        <h1 className="text-[#2C2F44] text-[30px] cursor-pointer font-extrabold sm:text-[35px] md:text-[40px] lg:text-[45px]">Floxsy</h1>
         </i>
 
         <ul className="hidden md:flex items-center gap-3">
