@@ -50,10 +50,10 @@ const CardsMap = () => {
       </h1>
       {error && (
         <div className="text-[#935F4C] px-4 py-3 rounded relative mb-4 text-center flex flex-col items-center justify-center">
-          <p className='text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]'>{error} Please refresh</p>
+          <p className='text-[18px] sm:text-[20px] md:text-[20px] lg:text-[22px] xl:text-[24px]'>{error} Please refresh</p>
           <button
             onClick={handleRefresh}
-            className="mt-2 h-[30px] text-[12px] bg-[#2B4257] text-white flex gap-2 items-center justify-center px-4 py-2 sm:px-6 sm:py-3 sm:text-[14px] md:px-8 md:py-5 md:text-[16px] rounded-md hover:bg-gray-500 transition"
+            className="mt-2 h-[30px] text-[14px] bg-[#2B4257] text-white flex gap-2 items-center justify-center px-8 py-3 sm:px-10 sm:py-4 sm:text-[14px] md:px-12 md:py-5 md:text-[18px] rounded-md hover:bg-gray-500 transition"
           >
             <i className="fa-solid fa-arrow-rotate-right"></i>
             <span>Refresh</span>
@@ -75,7 +75,7 @@ const CardsMap = () => {
               priority
               width={400}
               height={500}
-              onLoadingComplete={()=> setLoadingImage(false)}
+              onLoad={()=> setLoadingImage(false)}
               alt={product.name}
             />
           </div>

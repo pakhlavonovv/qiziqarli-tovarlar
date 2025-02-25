@@ -15,28 +15,28 @@ const geistMono = Geist_Mono({
 });
 
 export default function RootLayout({ children }) {
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const disableDevTools = (event) => {
-  //       if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
-  //         event.preventDefault();
-  //         alert("Viewing the code is prohibited by the website!")
-  //       }
-  //     };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const disableDevTools = (event) => {
+        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+          event.preventDefault();
+          alert("Viewing the code is prohibited by the website!")
+        }
+      };
 
-  //     const disableRightClick = (event) => {
-  //       event.preventDefault();
-  //     };
+      const disableRightClick = (event) => {
+        event.preventDefault();
+      };
 
-  //     document.addEventListener("contextmenu", disableRightClick);
-  //     document.addEventListener("keydown", disableDevTools);
+      document.addEventListener("contextmenu", disableRightClick);
+      document.addEventListener("keydown", disableDevTools);
 
-  //     return () => {
-  //       document.removeEventListener("contextmenu", disableRightClick);
-  //       document.removeEventListener("keydown", disableDevTools);
-  //     };
-  //   }
-  // }, []);
+      return () => {
+        document.removeEventListener("contextmenu", disableRightClick);
+        document.removeEventListener("keydown", disableDevTools);
+      };
+    }
+  }, []);
 
   return (
     <html lang="en">

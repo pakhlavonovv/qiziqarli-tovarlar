@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { db1 } from "../../../../firebase-config";
 import { db } from "../../../../firebase-products";
 import { collection, addDoc,doc, getDoc, Timestamp } from "firebase/firestore";
@@ -27,9 +28,11 @@ const PaymentPage = () => {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [receipt, setReceipt] = useState(null);
+    const [receiptLoading, setReceiptLoading] = useState(false)
     const searchParams = useSearchParams();
     const dynamicPrice = searchParams.get('price');
     const count = searchParams.get('count');
+    const router = useRouter()
 
 
     useEffect(() => {
@@ -61,6 +64,7 @@ const PaymentPage = () => {
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
+        setReceiptLoading(true)
     
         const formData = new FormData();
         formData.append("image", file);
@@ -76,17 +80,19 @@ const PaymentPage = () => {
     
             if (data.success) {
                 setReceipt(data.data.url); 
-                setModalMessage("Image uploaded successfully!");
+                setModalMessage("Receipt uploaded successfully!");
                 setShowModal(true)
             } else {
-                console.error("Image upload failed:", data);
-                setModalMessage("Failed to upload image.");
+                console.error("Receipt upload failed:");
+                setModalMessage("Failed to upload receipt.");
                 setShowModal(true)
             }
         } catch (error) {
-            console.error("Error uploading image:", error);
-            setModalMessage("An error occurred while uploading the image.");
+            console.error("Error uploading receipt:", error);
+            setModalMessage("An error occurred while uploading the receipt.");
             setShowModal(true)
+        } finally {
+            setReceiptLoading(false)
         }
     };
     
@@ -114,7 +120,7 @@ const PaymentPage = () => {
                 createdAt: Timestamp.now(),
             };    
             const docRef = await addDoc(collection(db, "orders"), orderData);
-            setModalMessage("Order successfully created!");
+            setModalMessage("⏱ Your order is under review. If the payment is successful, your order will be accepted and we will contact you soon!");
             setShowModal(true)
             setFirstName("");
             setLastName("");
@@ -133,8 +139,8 @@ const PaymentPage = () => {
     };
     
     const closeModal = () => {
-        if (modalMessage.startsWith('Dear')) {
-          router.push('/sign-up');
+        if (modalMessage.startsWith('⏱ Your order is under review.')) {
+          router.push('/');
         } else {
           setShowModal(false);
         }
@@ -143,8 +149,8 @@ const PaymentPage = () => {
     if (!product) return <div className="flex flex-col min-h-screen">
     <Header />
     <main className="flex-grow flex flex-col items-center justify-center mb-9 mt-9">
-      <h1 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Product Not Found</h1>
-      <Link href={'/'} className="w-[150px] h-[35px] flex items-center justify-center bg-black text-white rounded-md">Go to blank page</Link>
+      <h1 className="text-[22px] sm:text-[25px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Product Not Found</h1>
+      <Link href={'/'} className="w-[180px] h-[35px] flex items-center justify-center underline rounded-md">Go to home page</Link>
     </main>
     <Footer />
   </div>
@@ -189,7 +195,7 @@ const PaymentPage = () => {
                         <label className="block text-gray-700 font-medium">Upload Payment Receipt:</label>
                         <input type="file" className="w-full p-2 border rounded-md" onChange={handleFileChange} accept="image/*,application/pdf" required />
 
-                        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md font-bold hover:bg-blue-700">Submit Payment</button>
+                        <button type="submit" disabled={receiptLoading} className="w-full bg-blue-600 text-white py-2 rounded-md font-bold hover:bg-blue-700">{receiptLoading ? 'Uploading receipt...' : 'Submit Payment'}</button>
                         <p className="text-center">Let's remind! Please post a valid and honest receipt for your order to be shipped or the product will not be ordered!</p>
                     </form>
                     {showModal && (
