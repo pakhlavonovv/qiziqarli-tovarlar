@@ -109,7 +109,7 @@ const Page = () => {
             value={email}
             onChange={handleLoginChange}
             required
-            placeholder="Enter your Login"
+            placeholder="Enter Your Email"
           />
           <input
             className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md"
@@ -117,7 +117,7 @@ const Page = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Enter your Password"
+            placeholder="Enter Your Password"
           />
           <button
             type="submit"
