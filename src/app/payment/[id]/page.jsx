@@ -162,9 +162,13 @@ const PaymentPage = () => {
 
                 <div className="w-[100%] max-w-md bg-white shadow-lg rounded-lg overflow-hidden p-5">
                     <div className="px-3 pt-2 rounded-lg mb-5 text-center">
-                        <div className="flex justify-center mb-3 gap-1 items-center">
-                            <i className="fa-brands fa-cc-visa fa-xl"></i>
+                        <div className="flex flex-col justify-center mb-3 gap-1 items-center">
+                            <i className="fa-brands fa-cc-visa fa-2xl"></i>
+                            <div className="flex flex-col mt-3 gap-2">
                             <p>To pay: 4278 3200 2268 1653</p>
+                            <p>Full name: SHOKHRUKHBER MAMAJANOV</p>
+                            <p>M / Y: 04/29</p>
+                            </div>
                         </div>
                         <Image src={product.image} alt={product.name} width={120} height={120} className="mx-auto rounded-lg" />
                         <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#2B4257] font-semibold mt-3">{product.name}</h2>
