@@ -18,7 +18,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-1">
                     <Link href={'/'} className='font-bold text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Support</Link>
                     <Link target='_blank' href={'mailto:floxsystore@gmail.com'} className='text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>floxsystore@gmail.com</Link>
-                    <Link target='_blank' href={'tel:+998907661303'} className='text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>+998 (90) 766-13-03</Link>
+                    <Link target='_blank' href={'https://t.me/pakhlavonov177'} className='text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Telegram support</Link>
                 </div>
                 <div className="flex flex-col gap-1 ">
                     <Link href={'/'} className='font-bold text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] transition-all hover:text-[#88A9C3]'>Quick Link</Link>
