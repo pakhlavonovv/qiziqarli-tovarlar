@@ -166,7 +166,6 @@ const PaymentPage = () => {
                             <i className="fa-brands fa-cc-visa fa-2xl"></i>
                             <div className="flex flex-col mt-3 gap-2">
                             <p>To pay: 4278 3200 2268 1653</p>
-                            <p>Full name: SHOKHRUKHBER MAMAJANOV</p>
                             <p>M / Y: 04/29</p>
                             </div>
                         </div>
