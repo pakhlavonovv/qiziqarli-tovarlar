@@ -73,7 +73,7 @@ const ProductDetails = ({ params }) => {
     if (access_token || login) {
       router.push(`/payment/${productId}?price=${dynamicPrice}&count=${count}`)
     } else {
-      setModalMessage('Hurmatli foydalanuvchi, mahsulotlarni xarid qilish uchun ro'yxatdan o'ting.');
+      setModalMessage(`Hurmatli foydalanuvchi, mahsulotlarni xarid qilish uchun ro'yxatdan o'ting.`);
       setShowModal(true);
     }
   };
