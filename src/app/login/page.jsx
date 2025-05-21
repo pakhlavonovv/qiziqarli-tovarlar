@@ -25,14 +25,14 @@ const Page = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      setModalMessage("Password is wrong! Please try again.");
+      setModalMessage("Parol noto'g'ri! Iltimos, qayta urinib koʻring.");
       setShowModal(true);
       return;
     }
     setLoading(true); 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setModalMessage(`😊 Dear ${email}, we are glad to have you back! We believe you will find the right and quality choice on Floxsy.`);
+      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Do'konimizda to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
       setShowModal(true);
       const user = userCredential.user;
       const access_token = await user.getIdToken();  
@@ -50,7 +50,7 @@ const Page = () => {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, providerGoogle);
-      setModalMessage(`😊 Dear, ${email} we are glad to have you back! We believe you will find the right and quality choice on Floxsy.`);
+      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Floxsy-da to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
       setShowModal(true);
       const user = result.user;
       const access_token = await user.getIdToken();  
@@ -63,8 +63,8 @@ const Page = () => {
         uid: user.uid,
       });  
     } catch (error) {
-      console.error('Error with Google sign-up:', error);
-      setModalMessage('Failed to sign in with Google. Please try again.');
+      console.error("Google ro'yxatdan o'tishda xatolik:', error");
+      setModalMessage("Google bilan tizimga kirib boʻlmadi. Iltimos, qayta urinib koʻring.");
       setShowModal(true);
     } finally {
       setLoading(false);
@@ -82,7 +82,7 @@ const Page = () => {
   };
 
   const closeModal = () => {
-    if (modalMessage.startsWith('😊 Dear')) {
+    if (modalMessage.startsWith('😊 Hurmatli')) {
       router.push('/');
     } else {
       setShowModal(false);
@@ -96,10 +96,10 @@ const Page = () => {
       <br className="hidden md:flex" />
       <div className="container flex flex-col items-center justify-center mt-4">
         <h1 className="text-[#112620] text-center text-[20px] sm:text-[25px] md:text-[30px] xl:text-[35px] font-bold">
-          Welcome Back, Login to Floxsy
+          Xush kelibsiz!
         </h1>
         <p className="text-[#112620] text-[13px] sm:text-[16px] md:text-[18px] text-center">
-          Access your account and start shopping smarter today!
+          Hisobingizga kiring va bugundan oqilona xarid qilishni boshlang!
         </p>
         
         <form onSubmit={handleLogin} className="w-full mt-3 flex flex-col items-center justify-center gap-2 lg:gap-3">
@@ -109,7 +109,7 @@ const Page = () => {
             value={email}
             onChange={handleLoginChange}
             required
-            placeholder="Enter Your Email"
+            placeholder="Elektron pochtangizni kiriting"
           />
           <input
             className="outline-[#2B4257] p-2 md:p-3 xl:p-4 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md"
@@ -117,13 +117,13 @@ const Page = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Enter Your Password"
+            placeholder="Elektron pochtangizni kiriting"
           />
           <button
             type="submit"
             className="bg-[#091235] text-white w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] rounded-md hover:bg-[#112620]"
           >
-            Log in
+            Kirish
           </button>
         </form>
         
@@ -131,16 +131,16 @@ const Page = () => {
           onClick={handleGoogleLogin}
           className="mt-2 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] flex items-center justify-center gap-1 text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md bg-transparent"
         >
-          <Image className="w-[25px] h-[25px]" src={GoogleIcon} alt="Google icon" /> Sign In with Google
+          <Image className="w-[25px] h-[25px]" src={GoogleIcon} alt="Google icon" /> Google bilan kirish
         </button>
         {error ? (
           <p className="mt-2 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-red-500 text-center">
-            Login or password wrong! Please try again.
+            Login yoki parol noto'g'ri! Iltimos, qayta urinib koʻring.
           </p>
         ) : null}
         {emailPassword ? (
           <p className="mt-2 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-red-500 ">
-            Your login must end with @gmail.com
+          Sizning loginingiz @gmail.com bilan tugashi kerak
           </p>
         ) : false}
         {showModal && (
@@ -154,9 +154,9 @@ const Page = () => {
                 onClick={closeModal}
                 className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
               >
-                {modalMessage && modalMessage.startsWith('😊 Dear') 
-                  ? 'Close and start shopping now' 
-                  : 'Close'}
+                {modalMessage && modalMessage.startsWith('😊 Hurmatli') 
+                  ? 'Yoping va hozir xarid qilishni boshlang' 
+                  : 'Yoping'}
               </button>
             </div>
           </div>

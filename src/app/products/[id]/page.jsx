@@ -73,7 +73,7 @@ const ProductDetails = ({ params }) => {
     if (access_token || login) {
       router.push(`/payment/${productId}?price=${dynamicPrice}&count=${count}`)
     } else {
-      setModalMessage('Dear user, Please register to buy products.');
+      setModalMessage('Hurmatli foydalanuvchi, mahsulotlarni xarid qilish uchun ro'yxatdan o'ting.');
       setShowModal(true);
     }
   };
@@ -81,7 +81,7 @@ const ProductDetails = ({ params }) => {
   
 
   const closeModal = () => {
-    if (modalMessage.startsWith('Dear')) {
+    if (modalMessage.startsWith('Hurmatli')) {
       router.push('/sign-up');
     } else {
       setShowModal(false);
