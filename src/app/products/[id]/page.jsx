@@ -121,12 +121,10 @@ const ProductDetails = ({ params }) => {
             <div>No image available</div>
           )}
           <div className="flex flex-col gap-1">
-            <span className="text-[12px] sm:text-[14px] lg:text-[16px]">Model: {product.model}</span>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-red-600">Free delivery</p>
             <h1 className="text-[18px] sm:text-[22px] lg:text-[25px] font-bold">{product.name}</h1>
             <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
-            <h3 className="text-[14px] lg:text-[16px] font-medium text-gray-700 line-through">${product.sale}</h3>
-            <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">${dynamicPrice}</h2>
+            <h3 className="text-[14px] lg:text-[16px] font-medium text-gray-700 line-through">{product?.sale || ""}</h3>
+            <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">{dynamicPrice}</h2>
             <span>Product count: {count}</span>
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-1">
@@ -144,7 +142,7 @@ const ProductDetails = ({ params }) => {
                 </button>
               </div>
               <button
-                className="bg-[#091235] w-[100%] h-[40px] text-[15px] text-white rounded-md"
+                className="bg-[#f97316] w-[100%] h-[40px] text-[15px] text-white transition-all hover:bg-[#ea580c] rounded-md"
                 onClick={handleBuyNow}
               >
                 Buy now

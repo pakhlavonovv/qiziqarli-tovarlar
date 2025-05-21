@@ -8,7 +8,7 @@ export async function POST(request) {
     const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
     const text = `
-📝 **New Message from Floxsy Contact Form**:
+📝 **Dokondan yangi xabar!**:
 👤 Name: ${fullName}
 📧 Email: ${email}
 📌 Topic: ${topic}

@@ -5,30 +5,27 @@ import Footer from "../components/footer";
 import '../components/style.css'
 const faqs = [
     {
-        question: "What does your company or business do?",
-        answer: "We help you find high-quality products and deliver them directly to your doorstep. Our goal is to provide the best online shopping experience for our customers.",
+        question: "Saytning asosiy maqsadi nima?",
+        answer: "Saytimiz orqali siz qulay, uy rozg‘orlarini amalga o‘shirishingiz va ishonchli tarzda xarid qilishingiz mumkin. Mahsulotlar sifatli va bevosita manzilingizgacha yetkaziladi.",
     },
     {
-        question: "What is the purpose of the site?",
-        answer: "Our website aims to make online shopping easy and convenient by offering high-quality products delivered directly to your doorstep. We prioritize customer satisfaction and strive to provide a seamless shopping experience.",
+        question: "Qanday to‘lov usullari mavjud?",
+        answer: "Biz Payme orqali to‘lovlarni qabul qilamiz. Bu xavfsiz va qulay to‘lov tizimi hisoblanadi.",
     },
     {
-        question: "What payment methods do you accept?",
-        answer: "We accept payments through Stripe. This ensures a safe and convenient payment process for our customers.",
+        question: "Yetkazib berish qancha vaqt oladi?",
+        answer: "Yetkazib berish odatda 20-40 minut. Agar sizning manzilingiz uzoqda bo‘lsa, bu jarayon 1 soatgacha cho‘zilishi mumkin.",
     },
     {
-        question: "How long does delivery take?",
-        answer: "Delivery usually takes 3-7 business days depending on your location. But sometimes it may take longer if your address is far from the product and it will take up to 14-18 days.",
+        question: "Yetkazib berish narxi qanday hisoblanadi?",
+        answer: "Yetkazib berish narxi sizning joylashuvingiz va buyurtmangiz hajmiga qarab belgilanadi. Aniq narx to‘lov paytida ko‘rsatiladi.",
     },
     {
-        question: "How is the shipping cost calculated?",
-        answer: "Shipping costs depend on the destination and the size of your order. The exact amount will be displayed at checkout.",
-    },
-    {
-        question: "What should I do if I entered the wrong address during checkout?",
-        answer: "If you entered the wrong address during payment, please contact us immediately - abdulokhpakhlavonov@gmail.com and in any case, write your problem on the contact page. Please let us know within 24 hours if you have any problem with the address otherwise it may be late.",
+        question: "Agar to‘lov paytida manzilni noto‘g‘ri kiritgan bo‘lsam, nima qilishim kerak?",
+        answer: "Agar manzilni xato kiritgan bo‘lsangiz, iltimos, zudlik bilan biz bilan bog‘laning — +998999717117 manzili orqali yoki **bog‘lanish sahifasi** orqali murojaat qiling. Yarim soat ichida yozsangiz, muammoni hal qilishimiz osonroq bo‘ladi.",
     },
 ];
+
 const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
     const toggleAccordion = (index) => {

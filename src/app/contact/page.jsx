@@ -31,25 +31,25 @@ const Page = () => {
         });
 
         if (response.ok) {
-          setModalMessage('✔ Your message has been sent successfully. Thank you for contacting!');
+          setModalMessage('✔ Xabaringiz muvaffaqiyatli yuborildi. Aloqa uchun rahmat!');
           setShowModal(true)
           form.reset();
         } else {
-          setModalMessage('❌ Failed to send the message. Please try again.');
+          setModalMessage('❌ Xabar yuborilmadi. Iltimos, qayta urinib koʻring.');
           setShowModal(true)
         }
       } catch (error) {
-        setModalMessage('❗ An error occurred. Please try again.');
+        setModalMessage('❗ Xatolik yuz berdi. Iltimos, qayta urinib koʻring.');
         setShowModal(true)
         console.error(error);
       }
     } else {
-      setModalMessage('Please register to contact us!')
+      setModalMessage('Biz bilan bogʻlanish uchun roʻyxatdan oʻting!')
       setShowModal(true)
     }
   };
   const closeModal = () => {
-    if (modalMessage.startsWith('Please register')) { 
+    if (modalMessage.startsWith('Roʻyxatdan oʻting')) { 
       setShowModal(false);
       router.push('/sign-up');
     } else {
@@ -65,46 +65,46 @@ const Page = () => {
       </div>
       <div className="container flex flex-col gap-2 lg:flex-row lg:justify-between lg:items-center">
         <div className="flex flex-col items-center justify-center gap-1 lg:items-start lg:w-full">
-          <h1 className="text-[14px] text-center sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px]">What problem do you have? Contact us.</h1>
-          <Link className="text-[12px] text-[#D6AD60] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]" href={'mailto:floxsystore@gmail.com'}>floxsystore@gmail.com</Link>
+          <h1 className="text-[14px] text-center sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px]">Sizda qanday muammo bor? Biz bilan bog'lanish.</h1>
+          <Link className="text-[12px] text-[#D6AD60] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]" href={'mailto:floxsystore@gmail.com'}>xojiakadokon@gmail.com</Link>
         </div>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center justify-center gap-1 mt-2 lg:gap-2 md:w-full"
         >
-          <h2 className="text-[20px] md:text-[22px] lg:text-[24px]">How Can We Help You?</h2>
+          <h2 className="text-[20px] md:text-[22px] lg:text-[24px]">Sizga qanday yordam bera olamiz?</h2>
           <input
             name="fullName"
             className="w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] p-2 border-[1px] border-[#E0D7C7] rounded-sm text-[12px] sm:text-[14px] xl:text-[16px] outline-none"
             type="text"
-            placeholder="Enter your full name"
+            placeholder="Toʻliq ismingizni kiriting"
             required
           />
           <input
             name="email"
             className="w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] p-2 border-[1px] border-[#E0D7C7] rounded-sm text-[12px] sm:text-[14px] xl:text-[16px] outline-none"
             type="email"
-            placeholder="Enter your email"
+            placeholder="Elektron pochtangizni kiriting"
             required
           />
           <input
             name="topic"
             className="w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] p-2 border-[1px] border-[#E0D7C7] rounded-sm text-[12px] sm:text-[14px] xl:text-[16px] outline-none"
             type="text"
-            placeholder="Enter about the topic"
+            placeholder="Mavzu haqida kiriting"
             required
           />
           <textarea
             name="message"
             className="w-[90%] h-[130px] md:w-[400px] xl:w-[500px] xl:h-[180px] resize-none p-2 border-[1px] border-[#E0D7C7] rounded-sm text-[12px] sm:text-[14px] xl:text-[16px] outline-none"
-            placeholder="Explain your message fully"
+            placeholder="Xabaringizni to'liq tushuntiring"
             required
           />
           <button
             type="submit"
             className="bg-[#2C2F44] w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] h-[40px] text-white text-[12px] sm:text-[14px] xl:text-[16px] rounded-sm"
           >
-            Send a message
+            Xabarni yuborish
           </button>
         </form>
 
@@ -126,7 +126,7 @@ const Page = () => {
         )}
       </div>
       <div className="mb-5">
-        <p className="container text-center text-[10px] sm:text-[12px] md:text-[14px]">Dear User, Floxsy will not ignore your problem and we guarantee that you will get a response within 1-2 days.</p>
+        <p className="container text-center text-[10px] sm:text-[12px] md:text-[14px]">Hurmatli foydalanuvchi, Do‘konimiz sizning muammoingizni e'tiborsiz qoldirmaydi va sizga 1-2 kun ichida javob olishingizga kafolat beramiz.</p>
       </div>
 
       <Footer />

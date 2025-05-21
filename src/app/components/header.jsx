@@ -12,48 +12,43 @@ const Header = () => {
 
   return (
     <div className="w-full">
-      <div className="bg-[#050505] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
-        <h2 className="text-white text-[9px] text-center min-[490px]:text-[11px] md:text-[13px] xl:text-[15px]">
-          Top-Quality Products at Great Prices – Free Delivery on All Orders
+      <div className="bg-[#F0F2F5] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
+        <h2 className="text-black text-[9px] text-center min-[490px]:text-[11px] md:text-[13px] xl:text-[15px]">
+        Xo‘ji aka do‘koni — 1 km ichida bepul yetkazib beramiz!
         </h2>
         <Link
-          href={'/'}
-          className="text-[9px] font-bold text-[#88A9C3] min-[490px]:text-[11px] md:text-[13px] xl:text-[15px] underline"
+          href={'./products'}
+          className="text-[9px] font-bold text-[#e63946] min-[490px]:text-[11px] md:text-[13px] xl:text-[15px] underline"
         >
-          Shop now!
+          Buyurtma qilish
         </Link>
       </div>
 
       <header className="container flex items-center justify-between relative">
         <i>
-        <h1 className="text-[#2C2F44] text-[30px] cursor-pointer font-extrabold sm:text-[35px] md:text-[40px] lg:text-[45px]">Floxsy</h1>
+        <Link href={'/'} className="text-[#007bff] text-[30px] cursor-pointer font-extrabold sm:text-[35px] md:text-[40px] lg:text-[45px]">Xo‘ji aka</Link>
         </i>
 
         <ul className="hidden md:flex items-center gap-3">
           <li>
             <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/'}>
-              Home
+              Asosiy sahifa
             </Link>
           </li>
           <li>
             <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/contact'}>
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/about'}>
-              About us
+              Bog‘lanish
             </Link>
           </li>
           <li>
             <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/sign-up'}>
-              Sign Up
+            Ro'yxatdan o'tish
             </Link>
           </li>
         </ul>
 
         <aside className="flex items-center gap-2 md:hidden">
-          <Link href={'/login'} className='text-[14px] sm:text-[16px]'>Log in</Link>
+          <Link href={'/login'} className='text-[14px] sm:text-[16px]'>Tizimga kirish</Link>
           <button onClick={toggleSidebar}>
             <i className="fa-solid fa-bars sm:text-[20px]"></i>
           </button>
@@ -61,9 +56,9 @@ const Header = () => {
 
         <Link
           href={'/login'}
-          className="hidden md:flex items-center justify-center bg-[#2C2F44] text-white w-[140px] h-[40px] rounded-md border-[1px] border-[#2C2F44] transition-all hover:bg-transparent hover:text-[#2C2F44]"
+          className="hidden md:flex items-center justify-center bg-[#2C2F44] text-white w-[150px] h-[40px] rounded-md border-[1px] border-[#2C2F44] transition-all hover:bg-transparent hover:text-[#2C2F44]"
         >
-          Log in
+          Tizimga kirish
         </Link>
 
         <div

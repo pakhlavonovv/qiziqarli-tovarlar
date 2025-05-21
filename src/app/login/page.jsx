@@ -8,7 +8,7 @@ import GoogleIcon from '../../../public/images/google.webp';
 import { useRouter } from "next/navigation";
 import Footer from "../components/footer";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth, db } from "../../../firebase-config";  
+import { auth, db, db1 } from "../../../firebase-config";  
 import { doc, setDoc } from 'firebase/firestore';
 
 const Page = () => {
@@ -56,12 +56,12 @@ const Page = () => {
       const access_token = await user.getIdToken();  
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('login', email);
-      await setDoc(doc(db, 'users', user.uid), {
-        firstname: user.firstname || user.email,
-        lastname: user.lastname || user.email,
+      await setDoc(doc(db1, 'users', user.uid), {
+        firstname: user.displayName?.split(" ")[0] || '',
+        lastname: user.displayName?.split(" ")[1] || '',
         email: user.email,
         uid: user.uid,
-      });
+      });  
     } catch (error) {
       console.error('Error with Google sign-up:', error);
       setModalMessage('Failed to sign in with Google. Please try again.');

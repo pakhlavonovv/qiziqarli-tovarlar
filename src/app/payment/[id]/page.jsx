@@ -162,20 +162,12 @@ const PaymentPage = () => {
 
                 <div className="w-[100%] max-w-md bg-white shadow-lg rounded-lg overflow-hidden p-5">
                     <div className="px-3 pt-2 rounded-lg mb-5 text-center">
-                        <div className="flex flex-col justify-center mb-3 gap-1 items-center">
-                            <i className="fa-brands fa-cc-visa fa-2xl"></i>
-                            <div className="flex flex-col mt-3 gap-2">
-                            <p>To pay: 4278 3200 2268 1653</p>
-                            <p>M / Y: 04/29</p>
-                            </div>
-                        </div>
                         <Image src={product.image} alt={product.name} width={120} height={120} className="mx-auto rounded-lg" />
                         <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#2B4257] font-semibold mt-3">{product.name}</h2>
                         <h3 className="text-[14px] font-bold text-[#091235] mt-1">Count: {count}</h3>
                         <h3 className="text-[14px] font-bold line-through text-[#091235] mt-1">Sale: ${product.sale}</h3>
                         <h3 className="text-lg font-bold text-green-600 mt-1">Price: ${dynamicPrice}</h3>
                     </div>
-
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <input type="text" placeholder="First Name" className="w-full p-2 border rounded-md" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                         <input type="text" placeholder="Last Name" className="w-full p-2 border rounded-md" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
@@ -199,7 +191,6 @@ const PaymentPage = () => {
                         <input type="file" className="w-full p-2 border rounded-md" onChange={handleFileChange} accept="image/*,application/pdf" required />
 
                         <button type="submit" disabled={receiptLoading} className="w-full bg-blue-600 text-white py-2 rounded-md font-bold hover:bg-blue-700">{receiptLoading ? 'Uploading receipt...' : 'Submit Payment'}</button>
-                        <p className="text-center">Let's remind! Please post a valid and honest receipt for your order to be shipped or the product will not be ordered!</p>
                     </form>
                     {showModal && (
             <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
