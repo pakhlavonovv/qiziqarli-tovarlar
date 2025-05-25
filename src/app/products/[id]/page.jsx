@@ -94,7 +94,7 @@ const ProductDetails = ({ params }) => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow flex flex-col items-center justify-center mb-9 mt-9">
-          <h1 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Product Not Found</h1>
+          <h1 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px]">Mahsulot topilmadi</h1>
           <Link href={'/'} className="w-[150px] h-[35px] flex items-center justify-center bg-black text-white rounded-md">Go to blank page</Link>
         </main>
         <Footer />
@@ -145,7 +145,7 @@ const ProductDetails = ({ params }) => {
                 className="bg-[#f97316] w-[100%] h-[40px] text-[15px] text-white transition-all hover:bg-[#ea580c] rounded-md"
                 onClick={handleBuyNow}
               >
-                Buy now
+                Xarid qilish
               </button>
             </div>
           </div>
@@ -160,7 +160,7 @@ const ProductDetails = ({ params }) => {
                   onClick={closeModal}
                   className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
                 >
-                  Close and register now
+                  Yopish va hoziroq ro'yxatdan o'tish
                 </button>
               </div>
             </div>
