@@ -85,10 +85,10 @@ const CardsMap = () => {
             </h2>
             <div className="flex justify-between items-center">
               <h2 className="text-[14px] sm:text-[16px] font-medium text-gray-700 line-through">
-                ${product.sale}
+                {product?.sale || "No sale"}
               </h2>
               <h3 className="font-bold text-[16px] sm:text-[18px] text-gray-900">
-                ${product.price}
+                {product.price}
               </h3>
             </div>
             <p className='text-red-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[19px]'>Free delivery</p>
