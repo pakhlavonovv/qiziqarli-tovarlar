@@ -66,7 +66,6 @@ const Page = () => {
       <div className="container flex flex-col gap-2 lg:flex-row lg:justify-between lg:items-center">
         <div className="flex flex-col items-center justify-center gap-1 lg:items-start lg:w-full">
           <h1 className="text-[14px] text-center sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px]">Sizda qanday muammo bor? Biz bilan bog'lanish.</h1>
-          <Link className="text-[12px] text-[#D6AD60] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]" href={'mailto:floxsystore@gmail.com'}>xojiakadokon@gmail.com</Link>
         </div>
         <form
           onSubmit={handleSubmit}
