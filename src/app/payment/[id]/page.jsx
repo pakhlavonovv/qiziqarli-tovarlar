@@ -183,7 +183,10 @@ const PaymentPage = () => {
                         <label className="block text-gray-700 font-medium">Toʻlov kvitansiyasini yuklash:</label>
                         <input type="file" className="w-full p-2 border rounded-md" onChange={handleFileChange} accept="image/*,application/pdf" required />
 
-                        <button type="submit" disabled={receiptLoading} className="w-full bg-blue-600 text-white py-2 rounded-md font-bold hover:bg-blue-700">{receiptLoading ? 'Kvitansiya yuklanmoqda...' : "To'lov qilish"}</button>
+<button type="submit" disabled={receiptLoading} className="w-full bg-blue-600 text-white py-2 rounded-md font-bold hover:bg-blue-700">
+  {receiptLoading ? 'Kvitansiya yuklanmoqda...' : "To'lov qilish"}
+</button>
+
                     </form>
                     {showModal && (
                         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
