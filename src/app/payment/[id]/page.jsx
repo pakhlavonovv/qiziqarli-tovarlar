@@ -22,10 +22,6 @@ const PaymentPage = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const [postalCode, setPostalCode] = useState("");
-    const [country, setCountry] = useState("");
-    const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [receipt, setReceipt] = useState(null);
     const [receiptLoading, setReceiptLoading] = useState(false)
@@ -117,24 +113,20 @@ const PaymentPage = () => {
                 firstName,
                 lastName,
                 street,
-                city,
-                postalCode,
-                country,
-                email,
                 phone: `+${phone}`,
                 receipt,
                 createdAt: Timestamp.now(),
+                productImage: product.image,
+                productName: product.name,
+                productCount: count,
+                productPrice: dynamicPrice
             };
             const docRef = await addDoc(collection(db, "orders"), orderData);
             setModalMessage("⏱ Buyurtmangiz tekshirilmoqda. Agar to'lov muvaffaqiyatli bo'lsa, buyurtmangiz qabul qilinadi va biz tez orada siz bilan bog'lanamiz!");
             setShowModal(true)
             setFirstName("");
             setLastName("");
-            setCity("");
             setStreet("");
-            setCountry("");
-            setPostalCode("");
-            setEmail("");
             setPhone("");
             setReceipt(null);
         } catch (error) {
@@ -171,7 +163,7 @@ const PaymentPage = () => {
                         <Image src={product.image} alt={product.name} width={120} height={120} className="mx-auto rounded-lg" />
                         <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#2B4257] font-semibold mt-3">{product.name}</h2>
                         <h3 className="text-[14px] font-bold text-[#091235] mt-1">Soni: {count}</h3>
-                        <h3 className="text-[14px] font-bold line-through text-[#091235] mt-1">Chegirma: ${product.sale}</h3>
+                        <h3 className="text-[14px] font-bold text-[#091235] mt-1">Chegirma: <span className="line-through">{product?.sale || "Chegirma yo'q"}</span></h3>
                         <h3 className="text-lg font-bold text-green-600 mt-1">Narxi: {dynamicPrice} UZS</h3>
                     </div>
                     <form onSubmit={handleSubmit} className="space-y-4">
