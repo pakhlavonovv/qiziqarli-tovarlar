@@ -141,7 +141,7 @@ const Page = () => {
         )}
         <button onClick={handleGoogleSignUp} className="mt-2 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] flex items-center justify-center gap-1 text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md bg-transparent">
           <Image className="w-[20px] h-[20px] sm:w-[25px] sm:h-[25px]" src={GoogleIcon} alt="Google icon" />
-          Sign Up with Google
+          Google bilan ro'yxatdan o'tish
         </button>
       </div>
       {!isValid ? <p className="mt-2 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-center text-red-600">Sizning loginingiz @gmail.com bilan tugashi kerak</p> : null}

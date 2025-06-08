@@ -14,10 +14,10 @@ const Header = () => {
     <div className="w-full">
       <div className="bg-[#F0F2F5] flex items-center justify-center gap-1 h-[7vh] md:gap-2 p-2">
         <h2 className="text-black text-[9px] text-center min-[490px]:text-[11px] md:text-[13px] xl:text-[15px]">
-        Xo‘ji aka do‘koni — 1 km ichida bepul yetkazib beramiz!
+       🛍️ Vaqtingizni tejang – Biz siz uchun tayyorlab qo‘yamiz!
         </h2>
         <Link
-          href={'./products'}
+          href={'./servis'}
           className="text-[9px] font-bold text-[#e63946] min-[490px]:text-[11px] md:text-[13px] xl:text-[15px] underline"
         >
           Buyurtma qilish
@@ -26,10 +26,10 @@ const Header = () => {
 
       <header className="container flex items-center justify-between relative">
         <i>
-        <Link href={'/'} className="text-[#007bff] text-[30px] cursor-pointer font-extrabold sm:text-[35px] md:text-[40px] lg:text-[45px]">Xo‘ji aka</Link>
+        <Link href={'/'} className="text-[#007bff] text-[30px] cursor-pointer font-extrabold sm:text-[35px] md:text-[40px] lg:text-[45px]">Xoji aka</Link>
         </i>
 
-        <ul className="hidden md:flex items-center gap-3">
+        <ul className="hidden min-[1029px]:flex items-center gap-3">
           <li>
             <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/'}>
               Asosiy sahifa
@@ -40,6 +40,11 @@ const Header = () => {
               Bog‘lanish
             </Link>
           </li>
+           <li>
+            <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/servis'}>
+              Bepul servis
+            </Link>
+          </li>
           <li>
             <Link className="font-semibold text-[#2C2F44] transition-all hover:text-[#050505]" href={'/sign-up'}>
             Ro'yxatdan o'tish
@@ -47,7 +52,7 @@ const Header = () => {
           </li>
         </ul>
 
-        <aside className="flex items-center gap-2 md:hidden">
+        <aside className="flex items-center gap-2 min-[1029px]:hidden">
           <Link href={'/login'} className='text-[14px] sm:text-[16px]'>Tizimga kirish</Link>
           <button onClick={toggleSidebar}>
             <i className="fa-solid fa-bars sm:text-[20px]"></i>
@@ -56,7 +61,7 @@ const Header = () => {
 
         <Link
           href={'/login'}
-          className="hidden md:flex items-center justify-center bg-[#2C2F44] text-white w-[150px] h-[40px] rounded-md border-[1px] border-[#2C2F44] transition-all hover:bg-transparent hover:text-[#2C2F44]"
+          className="hidden min-[1029px]:flex items-center justify-center bg-[#2C2F44] text-white w-[150px] h-[40px] rounded-md border-[1px] border-[#2C2F44] transition-all hover:bg-transparent hover:text-[#2C2F44]"
         >
           Tizimga kirish
         </Link>
@@ -72,17 +77,22 @@ const Header = () => {
           <ul className="flex flex-col gap-4 mt-10">
             <li>
               <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/'}>
-                Home
+                Asosiy sahifa
               </Link>
             </li>
             <li>
               <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/contact'}>
-                Contact
+                Bog'lanish
+              </Link>
+            </li>
+              <li>
+              <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/servis'}>
+                Bepul servis
               </Link>
             </li>
             <li>
               <Link className="text-white text-[12px] sm:text-[14px] hover:text-gray-300" href={'/sign-up'}>
-                Sign Up
+                Ro'yxatdan o'tish
               </Link>
             </li>
           </ul>

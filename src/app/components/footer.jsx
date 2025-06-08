@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className='w-full bg-[#0f172a] p-4'>
                     <i>
-                        <h1 className="container cursor-pointer text-white text-[25px] font-extrabold sm:text-[30px] lg:text-[35px] xl:text-[40px] text-center sm:text-start">Xo‘ji aka</h1>
+                        <h1 className="container cursor-pointer text-white text-[25px] font-extrabold sm:text-[30px] lg:text-[35px] xl:text-[40px] text-center sm:text-start">Xoji aka</h1>
                     </i>
             <div className="w-[95%] mx-auto grid grid-cols-1 lg:mt-[30px] justify-between gap-5 p-3 sm:grid-cols-2 md:grid-cols-3 md:gap-[100px] lg:gap-[130px] xl:gap-[160px]">
                 <div className="flex flex-col gap-1">

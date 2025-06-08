@@ -3,16 +3,21 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { fullName, email, topic, message } = body;
+    const { fullName, phone, order, email, topic, message } = body;
 
     const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
     const text = `
 📝 **Dokondan yangi xabar!**:
-👤 Name: ${fullName}
-📧 Email: ${email}
-📌 Topic: ${topic}
-💬 Message: ${message}
+
+👤 Ism Familya: ${fullName}
+📧 Email: ${email || 'Email mavjud emas'}
+📌 Mavzu: ${topic || 'Mavzu mavjud emas'}
+💬 Xabar: ${message || 'Xabar mavjud emas'}
+
+Servis buyurtma bor!
+☎️ Telefon raqami: ${phone}
+🛒 Buyurtma: ${order}
 `;
 
     const response = await fetch(telegramApiUrl, {
