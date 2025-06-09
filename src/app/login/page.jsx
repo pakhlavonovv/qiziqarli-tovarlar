@@ -50,7 +50,7 @@ const Page = () => {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, providerGoogle);
-      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Floxsy-da to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
+      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Do'konimiz-da to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
       setShowModal(true);
       const user = result.user;
       const access_token = await user.getIdToken();  
