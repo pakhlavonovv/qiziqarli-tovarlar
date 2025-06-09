@@ -55,7 +55,7 @@ const Header = () => {
         <aside className="flex items-center gap-2 min-[1029px]:hidden">
           <Link href={'/login'} className='text-[14px] sm:text-[16px]'>Tizimga kirish</Link>
           <button onClick={toggleSidebar}>
-            <i className="fa-solid fa-bars sm:text-[20px]"></i>
+            <i className="fa-solid fa-bars fa-xl"></i>
           </button>
         </aside>
 
