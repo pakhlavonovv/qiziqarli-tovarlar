@@ -64,7 +64,7 @@ const Page = () => {
       });  
     } catch (error) {
       console.error("Google ro'yxatdan o'tishda xatolik:', error");
-      setModalMessage("Google bilan tizimga kirib boʻlmadi. Iltimos, qayta urinib koʻring.");
+      setModalMessage("Google bilan tizimga kirib boʻlmadi yoki siz allaqachon tizimga kirgansiz.");
       setShowModal(true);
     } finally {
       setLoading(false);
