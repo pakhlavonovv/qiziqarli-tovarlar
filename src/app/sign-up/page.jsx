@@ -89,7 +89,7 @@ const Page = () => {
         });        
       } catch (error) {
         console.error('Google roʻyxatdan oʻtishda xatolik yuz berdi:', error);
-        setModalMessage('Google bilan roʻyxatdan oʻtib boʻlmadi. Iltimos, qayta urinib koʻring.');
+        setModalMessage('Google bilan roʻyxatdan oʻtib boʻlmadi yoki siz allaqachon tizimga kirgansiz.');
         setShowModal(true);
       } finally {
         setLoading(false);
