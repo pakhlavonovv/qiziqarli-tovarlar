@@ -32,7 +32,7 @@ const Page = () => {
     setLoading(true); 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Do'konimizda to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
+      setModalMessage(`😊 Hurmatli foydalanuvchi, sizni qaytib kelganimizdan xursandmiz! Do'konimizda to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
       setShowModal(true);
       const user = userCredential.user;
       const access_token = await user.getIdToken();  
@@ -50,7 +50,7 @@ const Page = () => {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, providerGoogle);
-      setModalMessage(`😊 Hurmatli ${email}, sizni qaytib kelganimizdan xursandmiz! Do'konimiz-da to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
+      setModalMessage(`😊 Hurmatli foydalanuvchi, sizni qaytib kelganimizdan xursandmiz! Do'konimiz-da to'g'ri va sifatli tanlovni topishingizga ishonamiz.`);
       setShowModal(true);
       const user = result.user;
       const access_token = await user.getIdToken();  
