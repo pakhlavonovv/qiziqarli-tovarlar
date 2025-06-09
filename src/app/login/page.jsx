@@ -155,8 +155,8 @@ const Page = () => {
                 className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
               >
                 {modalMessage && modalMessage.startsWith('😊 Hurmatli') 
-                  ? 'Yoping va hozir xarid qilishni boshlang' 
-                  : 'Yoping'}
+                  ? 'Yopish va hoziroq xarid qilishni boshlash' 
+                  : 'Yopish'}
               </button>
             </div>
           </div>
