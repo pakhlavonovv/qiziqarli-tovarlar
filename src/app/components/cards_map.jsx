@@ -44,7 +44,7 @@ const CardsMap = () => {
     fetchProducts();
   }, []);
   return (
-    <div className="w-[97%] mx-auto px-4">
+    <div className="w-[99%] md:w-[90%] mx-auto px-4">
       <h1 className="text-[20px] text-center sm:text-start font-bold sm:text-[25px] lg:text-[30px] mb-8">
         Mahsulotlar
       </h1>

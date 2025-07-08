@@ -117,7 +117,7 @@ const Page = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Elektron pochtangizni kiriting"
+            placeholder="Parolingizni kiriting"
           />
           <button
             type="submit"

@@ -100,7 +100,7 @@ const Page = () => {
           />
           <button
             type="submit"
-            className="bg-[#2C2F44] w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] h-[40px] text-white text-[12px] sm:text-[14px] xl:text-[16px] rounded-sm"
+            className="bg-[#F5613F] w-[90%] md:w-[400px] xl:w-[500px] xl:h-[50px] h-[40px] text-white text-[12px] sm:text-[14px] xl:text-[16px] rounded-sm hover:bg-[#f5603f9a]"
           >
             Xabarni yuborish
           </button>
@@ -117,7 +117,7 @@ const Page = () => {
                 onClick={closeModal}
                 className="mt-4 w-full bg-red-500 text-[12px] sm:text-[16px] lg:text-[18px] text-white py-2 rounded-md transition-all hover:bg-[#935F4C]"
               >
-                Close
+                Yopish
               </button>
             </div>
           </div>
