@@ -179,7 +179,7 @@ const PaymentPage = () => {
       required
     />
                         <label>To‘lovni quyidagi karta raqamiga yuboring:</label>
-                        <p><strong>9860 0609 0890 0370</strong> <span className="text-[14px]">Mamajanov Shoxruxbek</span></p>
+                        <p><strong>1234 1234 1234 1234</strong> <span className="text-[14px]">Ismoilov Doniyor</span></p>
                         <label className="block text-gray-700 font-medium">Toʻlov kvitansiyasini yuklash:</label>
                         <input type="file" className="w-full p-2 border rounded-md" onChange={handleFileChange} accept="image/*,application/pdf" required />
 
