@@ -139,7 +139,7 @@ const Page = () => {
             <button type="submit" disabled={!isValid} className="bg-[#091235] text-white w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] text-[12px] sm:text-[15px] lg:text-[17px] rounded-md hover:bg-[#112620]">Sign Up</button>
           </form>
         )}
-        <button onClick={handleGoogleSignUp} className="mt-2 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] flex items-center justify-center gap-1 text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md bg-transparent">
+        <button onClick={handleGoogleSignUp} disabled className="mt-2 w-[90%] sm:w-[400px] md:w-[450px] h-[35px] sm:h-[40px] md:h-[45px] flex items-center justify-center gap-1 text-[12px] sm:text-[15px] lg:text-[17px] border-[1px] border-[#091235] rounded-md bg-transparent">
           <Image className="w-[20px] h-[20px] sm:w-[25px] sm:h-[25px]" src={GoogleIcon} alt="Google icon" />
           Google bilan ro'yxatdan o'tish
         </button>

@@ -3,7 +3,7 @@ import CardsMap from './components/cards_map'
 import Footer from "./components/footer"
 const Page = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header/>
       <div className="mt-[20px] sm:mt-[60px] md:mt-[80px] lg:mt-[100px]">
       <CardsMap/>
