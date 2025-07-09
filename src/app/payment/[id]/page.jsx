@@ -172,14 +172,14 @@ const PaymentPage = () => {
                         <input type="text" placeholder="Masalan: Andijon shahri, Bobur ko‘chasi 12-uy" className="w-full p-2 border rounded-md" value={street} onChange={(e) => setStreet(e.target.value)} required />
                          <input
       type="tel"
-      placeholder="Phone number"
+      placeholder="Telefon raqamingiz"
       className="w-full p-2 border rounded-md"
       value={`+998${phone}`}
       onChange={handleChange}
       required
     />
                         <label>To‘lovni quyidagi karta raqamiga yuboring:</label>
-                        <p><strong>1234 1234 1234 1234</strong> <span className="text-[14px]">Ismoilov Doniyor</span></p>
+                        <p><strong>5614 6822 1802 5817</strong> <span className="text-[14px]">Ismoilov Doniyor</span></p>
                         <label className="block text-gray-700 font-medium">Toʻlov kvitansiyasini yuklash:</label>
                         <input type="file" className="w-full p-2 border rounded-md" onChange={handleFileChange} accept="image/*,application/pdf" required />
 

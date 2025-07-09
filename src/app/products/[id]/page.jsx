@@ -109,7 +109,7 @@ const ProductDetails = ({ params }) => {
       </div>
       <div className="container">
         <div className="flex items-center gap-2">
-          <span className="text-[12px] sm:text-[14px] md:text-[16px]">Trend Products /</span>
+          <span className="text-[12px] sm:text-[14px] md:text-[16px]">Mahsulotlar /</span>
           <span className="text-[12px] sm:text-[14px] md:text-[16px]"> {product.name}</span>
         </div>
         <div className="mt-5 grid grid-cols-1 items-center justify-center gap-5 lg:grid-cols-2 lg:items-center">
@@ -125,7 +125,7 @@ const ProductDetails = ({ params }) => {
             <p className="text-[14px] sm:text-[16px] lg:text-[18px]">{product.description}</p>
             <h3 className="text-[14px] lg:text-[16px] font-medium text-gray-700 line-through">{product?.sale || ""}</h3>
             <h2 className="text-[20px] sm:text-[22px] lg:text-[25px] font-bold">{dynamicPrice}</h2>
-            <span>Product count: {count}</span>
+            <span>Mahsulot soni: {count}</span>
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-1">
                 <button
@@ -142,7 +142,7 @@ const ProductDetails = ({ params }) => {
                 </button>
               </div>
               <button
-                className="bg-[#f97316] w-[100%] h-[40px] text-[15px] text-white transition-all hover:bg-[#ea580c] rounded-md"
+                className="bg-[#F5613F] w-[100%] h-[40px] text-[15px] text-white transition-all hover:bg-[#ea580c] rounded-md"
                 onClick={handleBuyNow}
               >
                 Xarid qilish
